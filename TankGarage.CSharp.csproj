@@ -78,7 +78,6 @@
     <Compile Include="Assets\Scripts\SelectVertex.cs" />
     <Compile Include="Assets\Scripts\SelectionManager.cs" />
     <Compile Include="Assets\Scripts\VertexMovement.cs" />
-    <Compile Include="Assets\Scripts\VertexMovement2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\BasicOutline.shader" />

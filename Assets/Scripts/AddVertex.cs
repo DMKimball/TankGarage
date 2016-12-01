@@ -20,8 +20,8 @@ public class AddVertex : MonoBehaviour
         //Debug.Log("addVertex() called");
         lastCreated = (GameObject)Instantiate(chassisVertex, Vector3.zero, Quaternion.identity);
 
-        VertexMovement2[] moveScripts = lastCreated.GetComponentsInChildren<VertexMovement2>();
-        foreach (VertexMovement2 scripts in moveScripts)
+        VertexMovement[] moveScripts = lastCreated.GetComponentsInChildren<VertexMovement>();
+        foreach (VertexMovement scripts in moveScripts)
         {
             scripts.cameraGlobe = cameraGlobe;
             scripts.translateSpeed = vertexSensitivity;

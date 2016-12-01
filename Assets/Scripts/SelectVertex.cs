@@ -99,12 +99,12 @@ public class SelectVertex : MonoBehaviour
     {
         if (isSelected)
         {
-            controller.moveSelection(movement);
+            controller.moveSelection(movement, this);
         }
         else
         {
             controller.setSelected(this);
-            controller.moveSelection(movement);
+            controller.moveSelection(movement, this);
         }
     }
 }

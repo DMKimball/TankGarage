@@ -7,13 +7,19 @@ public class SelectionManager : MonoBehaviour
 
     public GameObject tankChassis;
 
-    private List<SelectVertex> vertices;
+    private List<SelectVertex> vertices, verticesMirrorX, verticesMirrorY, verticesMirrorZ;
     private GenerateChassis chassisGenerator;
+    private AddVertex addVertex;
+    private bool mirrorModeX, mirrorModeY, mirrorModeZ;
 
     public void Start()
     {
         if (tankChassis != null) chassisGenerator = tankChassis.GetComponent<GenerateChassis>();
+        addVertex = GetComponent<AddVertex>();
         vertices = new List<SelectVertex>();
+        verticesMirrorX = new List<SelectVertex>();
+        verticesMirrorY = new List<SelectVertex>();
+        verticesMirrorZ = new List<SelectVertex>();
     }
 
     public void addSelected(SelectVertex vertex)
@@ -55,13 +61,54 @@ public class SelectionManager : MonoBehaviour
         return vertices.Count;
     }
 
-    public void moveSelection(Vector3 movement)
+    public void moveSelection(Vector3 movement, SelectVertex caller)
     {
         if (movement.magnitude == 0) return;
-        foreach(SelectVertex vertex in vertices)
+        if (vertices.Contains(caller))
         {
-            vertex.move(movement);
-            if (chassisGenerator != null) chassisGenerator.UpdateMesh(vertex);
+            foreach (SelectVertex vertex in vertices)
+            {
+                vertex.move(movement);
+                if (chassisGenerator != null) chassisGenerator.UpdateMesh(vertex);
+            }
         }
+    }
+
+    public bool isMirroredX()
+    {
+        return mirrorModeX;
+    }
+
+    public bool isMirroredY()
+    {
+        return mirrorModeY;
+    }
+
+    public bool isMirroredZ()
+    {
+        return mirrorModeZ;
+    }
+
+    public void setMirroredX(bool val)
+    {
+        mirrorModeX = val;
+        if(mirrorModeX)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    public void setMirroredY(bool val)
+    {
+        mirrorModeY = val;
+    }
+
+    public void setMirroredZ(bool val)
+    {
+        mirrorModeZ = val;
     }
 }
